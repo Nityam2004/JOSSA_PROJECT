@@ -30,7 +30,7 @@ try:
     print("Selecting Round No...")
     round_no_dropdown = wait.until(EC.element_to_be_clickable((By.ID, "ctl00_ContentPlaceHolder1_ddlroundno_chosen")))
     round_no_dropdown.click()
-    round_no_option = wait.until(EC.element_to_be_clickable((By.XPATH, "//li[text()='1']")))
+    round_no_option = wait.until(EC.element_to_be_clickable((By.XPATH, "//li[text()='2']")))
     round_no_option.click()
     time.sleep(2)  # Wait for the page to update
 

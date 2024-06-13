@@ -1,0 +1,134 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo img {
+    width: 100%;
+  height: 100%;
+  object-fit: cover; /* other values: contain, fill, scale-down, none */
+
+}
+.logo{
+    width: 100%; /* or any specific width */
+    height: auto; /* adjust height as needed */
+ 
+}
+
+.nav-container {
+    background-color: #93f46d;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    padding-left: 20px; /* Add some padding to the left */
+}
+
+nav ul li {
+    margin-right: 20px;
+    position: relative; /* necessary for the submenu positioning */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+nav ul li a.active {
+    font-weight: bold;
+}
+
+nav ul .sub-menu {
+    display: none;
+    position: absolute;
+    background-color: #f8f8f8;
+    list-style-type: none;
+    padding: 10px;
+    border: 1px solid #ccc;
+    top: 100%; /* position submenu directly below the parent li */
+    left: 0;
+    white-space: nowrap;
+}
+
+nav ul li:hover .sub-menu {
+    display: block;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.left-div {
+    width: 45%;
+    border: 1px solid #ccc; /* Optional: for visual boundary */
+    height: 400px; /* Fixed height */
+    overflow-y: scroll; /* Enables vertical scrolling */
+    padding: 10px; /* Adds some padding inside the container */
+}
+
+.right-div {
+
+    width: 45%;
+    height: 400px; /* Fixed height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    overflow: hidden; /* Ensure no overflow */
+}
+
+
+.iitg-photo  {
+    width: 100%;
+  height: 120%;
+  object-fit: cover; /* other values: contain, fill, scale-down, none */
+
+}
+
+.footer-links {
+    list-style-type: none;
+   
+    margin: 10px 0;
+    display: flex;
+    
+    background-color: #5a5c5a;
+    list-style-type: none;
+    
+    padding: 0;
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    padding-left: 20px; /* Add some padding to the left */
+    height: 30px;
+    justify-content: center;
+}
+
+.footer-links li {
+    margin: 0 10px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #edf1f7;
+
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+    background-color: #77bce6;
+}
