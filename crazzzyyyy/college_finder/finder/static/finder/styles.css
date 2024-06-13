@@ -1,3 +1,5 @@
+/* Add this CSS to styles.css or your preferred stylesheet */
+
 /* General Body Styling */
 body {
     font-family: Arial, sans-serif;
@@ -27,12 +29,13 @@ body {
     margin-top: 30px;
     animation: fadeIn 1s ease-in-out;
     border: 1px solid #333;
+    position: relative; /* Ensure positioning context for absolute positioned elements */
 }
 
 /* Header Styling */
 h1 {
     text-align: center;
-    color: #e91e63;
+    color: #007bff; /* Changed color to blue */
     font-weight: 700;
     margin-bottom: 20px;
     font-size: 2em;
@@ -50,7 +53,7 @@ form {
 label {
     margin-bottom: 5px;
     font-weight: 500;
-    color: #ff397b;
+    color: #007bff; /* Changed color to blue */
     font-weight: bold;
 }
 
@@ -76,24 +79,24 @@ input:focus,
 select:focus {
     background: #444;
     outline: none;
-    box-shadow: 0 0 10px rgba(233, 30, 99, 0.5);
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Changed shadow color to blue */
 }
 
 /* Button Styling */
 button {
-    background: linear-gradient(135deg, #e91e63, #ff4081);
+    background: linear-gradient(135deg, #3238d8, #3d58d1);
     color: white;
     cursor: pointer;
     font-weight: 600;
     text-transform: uppercase;
-    box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4); /* Changed shadow color to blue */
     transition: all 0.4s ease;
 }
 
 button:hover {
-    background: linear-gradient(135deg, #ff4081, #e91e63);
+    background: linear-gradient(135deg,  #021ffd, #0056b3); /* Changed gradient colors to blue */
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(233, 30, 99, 0.6);
+    box-shadow: 0 10px 20px rgba(13, 0, 255, 0.6); /* Changed shadow color to blue */
 }
 
 /* Results List Styling */
@@ -114,13 +117,13 @@ li {
 }
 
 li:hover {
-    background: rgba(233, 30, 99, 0.2);
-    border-color: #e91e63;
+    background: rgba(0, 123, 255, 0.2); /* Changed background color to blue */
+    border-color: #007bff; /* Changed border color to blue */
 }
 
 /* Link Styling */
 a {
-    color: #e91e63;
+    color: #007bff; /* Changed color to blue */
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease;
@@ -129,7 +132,7 @@ a {
 }
 
 a:hover {
-    color: #ff4081;
+    color: #0056b3; /* Changed hover color to darker blue */
 }
 
 /* Animation for Fade-In Effect */
@@ -168,102 +171,23 @@ a:hover {
     }
 }
 
-/* Navbar Styling */
-.navbar {
-    min-height: 5vmin;
-    background-color: rgb(194, 226, 224);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* Home Button Styling */
+.home-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
     padding: 10px 20px;
+    background: #007bff; /* Blue background */
     color: white;
-}
-
-.logo img {
-    max-width: 100%;
-    height: auto;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    padding: 10px 20px;
-}
-
-.leftnav button,
-.rightnav button {
-    background-color: #007bff;
     border: none;
-    color: white;
-    padding: 10px 20px;
-    margin: 5px;
+    border-radius: 6px;
     cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.leftnav button:hover,
-.rightnav button:hover {
-    background-color: #0056b3;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.rightnav {
-    margin-left: auto;
-}
-
-/* Content Styling */
-.content {
-    display: flex;
-    align-items: start;
-    padding: 20px;
-}
-
-.questions,
-.features {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    width: 90%;
-    margin: 20px 10px;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.questions:hover,
-.features:hover {
-    background-color: rgba(255, 255, 255, 0.9);
-}
-
-.bigbutton {
-    display: block;
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 10px;
-    font-size: 18px;
-    background-color: #007bff;
-    border: none;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 500;
+    text-decoration: none;
     transition: background-color 0.3s ease;
 }
 
-.bigbutton:hover {
-    background-color: #0056b3;
-}
-
-.styledbutton {
-    display: block;
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 10px;
-    font-size: 16px;
-    background-color: #28a745;
-    border: none;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease
+.home-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
 }

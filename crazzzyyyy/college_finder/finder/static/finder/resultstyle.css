@@ -32,7 +32,7 @@ body {
 /* Header Styling */
 h1 {
     text-align: center;
-    color: #e91e63;
+    color: #007bff; /* Changed color to blue */
     font-weight: 700;
     margin-bottom: 20px;
 }
@@ -52,7 +52,7 @@ h1 {
 }
 
 .result-item {
-    background: #e91e63;
+    background: #007bff; /* Changed background color to blue */
     margin-bottom: 10px;
     padding: 15px;
     border-radius: 6px;
@@ -61,8 +61,8 @@ h1 {
 }
 
 .result-item:hover {
-    background: rgba(233, 30, 99, 0.2);
-    border-color: #e91e63;
+    background: rgba(0, 123, 255, 0.2); /* Changed hover background color to blue */
+    border-color: #007bff; /* Changed border color to blue */
 }
 
 .result-item:hover .college-name {
@@ -91,7 +91,7 @@ h1 {
 
 /* Link Styling */
 .back-link {
-    color: #e91e63;
+    color: #007bff; /* Changed color to blue */
     text-decoration: none;
     font-weight: 600;
     display: block;
@@ -99,5 +99,5 @@ h1 {
 }
 
 .back-link:hover {
-    color: #ff4081;
+    color: #0056b3; /* Changed hover color to darker blue */
 }
