@@ -26,7 +26,9 @@ def search(request):
         category = request.POST['category']
         gender = request.POST['gender']
         unknown = request.POST['unknown']
+        college_type = request.POST['college_type']
         
+        # Base query
         results = College.objects.filter(
             category=category,
             gender=gender,
@@ -35,6 +37,16 @@ def search(request):
             closing_rank__gte=rank - 100
         )
 
+        # Filter based on college type
+        if college_type == 'IITs':
+            results = results.filter(college_name__startswith='Indian Institute of Technology')
+        elif college_type == 'IIITs':
+            results = results.filter(college_name__startswith='Indian Institute of Information Technology')
+        elif college_type == 'Others':
+            results = results.exclude(college_name__startswith='Indian Institute of Technology')
+            results = results.exclude(college_name__startswith='Indian Institute of Information Technology')
+
+        # Order the results by college name
         results = results.order_by('college_name')
 
         return render(request, 'finder/results.html', {'results': results})
