@@ -3,51 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/static/josaahome.css">
+    <title>My Josaa Page</title>
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <div>
-    <div class="logo">
-        <img src="/static/image.jpg">
+    <div class="header-container">
+        <img src="/static/josaa_logo.jpg" alt="Josaa Logo" class="logo">
+    </div>
+    <div class="nav-container">
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">Features</a>
+                    <ul class="sub-menu">
+                        <li><a href="#">ORCR</a></li>
+                        <li><a href="#">COLLEGE PREDICTOR</a></li>
+                        <li><a href="#">RANK VS MARKS JEE ADVANCED</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Help</a></li>
+            </ul>
+        </nav>
     </div>
 
-<div class="nevbar">
-    <div class="leftnav">
-        <button>Home</button>
-        <button>Previous year data</button>
-        <button>Help</button>
+    <div class="container">
+        <div class="left-div">
+            <h2>News and Notices</h2>
+            <ul id="news-list">
+                <!-- News items will be dynamically added here -->
+            </ul>
+        </div>
+        <div class="right-div">
+            <img src="/static/iitg_photo.jpg" alt="IITG Photo" class="iitg-photo">
+        </div>
     </div>
-    <div class="rightnav">
-        <button>
-            <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
-        </button>
-    </div>
-</div>
-<div class="content">
-<div class="questions">
-    <button class="bigbutton">ask something</button>
-    <button class="bigbutton">which is most priorities college</button>
-    <button class="bigbutton">other questions</button>
 
-</div>
-<div class="features">
-    <button class="styledbutton">opening and closing ranks</button>
-    <button class="styledbutton">college pridicter</button>
-    <button class="styledbutton">rank vs college</button>
-    <button class="styledbutton">other features</button>
-
-</div>
-    </div>
-    <div class="useful-links">
-        <h2>Some Useful Links</h2>
-        <ul>
-            <li><a href="https://jeemain.nta.nic.in/">JEE Main</a></li>
-            <li><a href="https://jeemain.nta.nic.in/">JEE Advanced</a></li>
-            <li><a href="https://nta.ac.in/">NTA</a></li>
+    <footer>
+        <ul class="footer-links">
+            <li><a href="#">JEE Advanced</a></li>
+            <li><a href="#">JEE Mains</a></li>
+            <li><a href="#">NTA</a></li>
         </ul>
-    </div>
-</div>
+    </footer>
 
+    <script src="/static/script1.js"></script>
 </body>
 </html>
