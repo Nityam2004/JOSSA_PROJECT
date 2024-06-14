@@ -15,6 +15,13 @@ def HomePage(request):
             return redirect('rank_vs_marks')
         if 'college_predictor' in request.POST:
             return redirect('college_predictor')
+        if 'faqs' in request.POST:
+            return redirect('faqs')
+        if 'about' in request.POST:
+            return redirect('about')
+        if 'contact' in request.POST:
+            return redirect('contact')
+        
     return render(request, 'home.html')
 
 def SignupPage(request):
@@ -132,3 +139,13 @@ def search(request):
 
         return render(request, 'results.html', {'results': results})
     return render(request, 'index1.html')
+
+def faqs(request):
+    return render(request, 'faqs.html')
+def about(request):
+    return render(request, 'about.html')
+def contact(request):
+    return render(request, 'contact.html')
+
+def help(request):
+    return render(request, 'help.html')

@@ -15,7 +15,10 @@ def HomePage(request):
             return redirect('rank_vs_marks')
         if 'college_predictor' in request.POST:
             return redirect('college_predictor')
+        if 'faqs' in request.POST:
+            return redirect('faqs')
     return render(request, 'home.html')
+
 
 def SignupPage(request):
     if request.method == 'POST':
@@ -156,3 +159,8 @@ def search(request):
         'unknowns': unknowns,
     }
     return render(request, 'index1.html', context)
+
+    
+def faqs(request):
+    return render(request, 'faqs.html')
+  

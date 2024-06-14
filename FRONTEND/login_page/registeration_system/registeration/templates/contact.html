@@ -1,0 +1,183 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - JoSAA 2024</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('/static/background.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .navbar {
+            background-color: #007bff;
+            overflow: hidden;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar a {
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .navbar a:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            margin-left: auto;
+        }
+
+        .logo img {
+            height: 60px;
+        }
+
+        .navbar .logout-button {
+            background-color: #ff6347;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-left: 20px;
+        }
+
+        .navbar .logout-button:hover {
+            background-color: #ff4500;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        .content h2 {
+            margin-top: 0;
+        }
+
+        .contact-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .contact-table td, .contact-table th {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .contact-table th {
+            background-color: #f2f2f2;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info p {
+            margin: 5px 10px;
+        }
+
+        .contact-img {
+            max-width: 100px; /* Set maximum width for images */
+            height: auto;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'faqs' %}">FAQs</a>
+            <a href="{% url 'help' %}">Help</a>
+        </div>
+        <div class="logo">
+            <img src="{% static 'jossa.jpg' %}" alt="JoSAA Logo">
+        </div>
+        <a href="{% url 'logout' %}" class="logout-button">Logout</a>
+    </div>
+
+    <div class="content">
+        <h2>Contact Us</h2>
+        
+        <table class="contact-table">
+            <tr>
+                <th>Contact Information</th>
+                <th>Picture</th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="contact-info">
+                        <p><strong>Name:</strong> NITYAM</p>
+                        <p><strong>Email:</strong> nityamrajput4@gmail.com</p>
+                    </div>
+                </td>
+                <td>
+                    <img src="{% static 'nityam.jpg' %}" alt="Contact Person 1" class="contact-img">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="contact-info">
+                        <p><strong>Name:</strong> YASH PAWAR</p>
+                        <p><strong>Email:</strong> optimumbuddy@gmail.com</p>
+                    </div>
+                </td>
+                <td>
+                    <img src="{% static 'pawar.jpg' %}" alt="Contact Person 2" class="contact-img">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="contact-info">
+                        <p><strong>Name:</strong> ROHIT NIGAM</p>
+                        <p><strong>Email:</strong> daddycool2819@gmail.com</p>
+                    </div>
+                </td>
+                <td>
+                    <img src="{% static 'rohit.jpg' %}" alt="Contact Person 3" class="contact-img">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="contact-info">
+                        <p><strong>Name:</strong> RAMJAS SAHU</p>
+                        <p><strong>Email:</strong> ramjasjdh31@gmail.com</p>
+                    </div>
+                </td>
+                <td>
+                    <img src="{% static 'ramjas.jpg' %}" alt="Contact Person 4" class="contact-img">
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

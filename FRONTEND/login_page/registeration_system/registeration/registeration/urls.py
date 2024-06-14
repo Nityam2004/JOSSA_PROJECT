@@ -29,6 +29,11 @@ urlpatterns = [
     path('marks_vs_rank/', views.MarksVsRankPage, name='marks_vs_rank'),
     path('college_predictor/', views.CollegePredictor, name='college_predictor'), 
     path('search/', views.search, name='search'),
+    path('faqs/', views.faqs, name='faqs'),
+    path('about/', views.about, name='about'),
+    path('contact/', views.contact, name='contact'),
+    path('help/', views.help, name='help'),
+    
     
 ]
 
