@@ -1,7 +1,6 @@
-from django.contrib.auth import get_user_model
 from pathlib import Path
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "django-insecure-u9!=92e(6qj_zy2!r*6)a)5t3+w2bh^@10#8tf^dg6!_k5zrwz"
@@ -18,6 +17,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "app1",
+    
 ]
 
 MIDDLEWARE = [
@@ -35,7 +35,7 @@ ROOT_URLCONF = "registeration.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": ['templates'],
+        "DIRS": [BASE_DIR / "templates"],  # Adjusted to point to your templates directory
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -57,10 +57,8 @@ DATABASES = {
     }
 }
 
-
-
 AUTHENTICATION_BACKENDS = [
-    "django.contrib.auth.backends.ModelBackend",  # Use Django's default authentication backend
+    "django.contrib.auth.backends.ModelBackend",
 ]
 
 LANGUAGE_CODE = "en-us"
@@ -73,9 +71,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-  BASE_DIR,"static"
+    BASE_DIR / "static",  # Adjusted to point to your static files directory
 ]
-# settings.py
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

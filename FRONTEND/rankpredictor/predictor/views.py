@@ -13,7 +13,7 @@ def predict_ranks(file_name, marks_to_predict):
     
     # Assuming the file has columns named 'rank' and 'marks'
     ranks = data['Rank']
-    marks = data['Marks'].apply(lambda x: float(str(x).replace(',', '')))
+    marks = data['Marks']
     
     # Ensure data is sorted by marks
     sorted_indices = np.argsort(marks)

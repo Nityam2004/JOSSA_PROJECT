@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="/static/resultstyle.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Search Results</h1>
+        <div class="results-wrapper">
+            {% if results %}
+                <ul class="results-list">
+                    {% for result in results %}
+                        <li class="result-item">
+                            <div class="college-name">{{ result.college_name }}</div>
+                            <div class="branch">{{ result.branch }}</div>
+                            <div class="gender">{{ result.gender }}</div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No results found.</p>
+            {% endif %}
+        </div>
+        <a href="{% url 'college_predictor' %}" class="back-link">Back to Search</a>
+    </div>
+</body>
+</html>

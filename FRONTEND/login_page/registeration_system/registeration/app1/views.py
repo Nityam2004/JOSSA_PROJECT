@@ -1,12 +1,20 @@
-from django.shortcuts import render,redirect
+import pandas as pd
+import numpy as np
+from scipy.interpolate import interp1d
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.http import HttpResponse
-from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from .models import College
 # Create your views here.
 @login_required(login_url='login')
 def HomePage(request):
-    
+    if request.method == 'POST':
+        if 'marks_vs_rank' in request.POST:
+            return redirect('rank_vs_marks')
+        if 'college_predictor' in request.POST:
+            return redirect('college_predictor')
     return render(request, 'home.html')
 
 def SignupPage(request):
@@ -15,42 +23,112 @@ def SignupPage(request):
         email = request.POST.get('email')
         password1 = request.POST.get('password')
         password2 = request.POST.get('confirm_password')
-        if(password1!=password2):return HttpResponse("Enter same confirm password")
+        if password1 != password2:
+            return HttpResponse("Passwords do not match.")
         else:
-            my_user = User.objects.create_user(uname,email,password1)
-            my_user.save()
-        return redirect('login')
-        
-
-        # Add any additional logic here, like saving the user to the database
+            if User.objects.filter(username=uname).exists():
+                return HttpResponse("Username already taken.")
+            elif User.objects.filter(email=email).exists():
+                return HttpResponse("Email already registered.")
+            else:
+                my_user = User.objects.create_user(uname, email, password1)
+                my_user.save()
+                return redirect('login')
     return render(request, 'registeration.html')
-
-
 
 def LoginPage(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('pass')
         
-        # Check for empty email or password
         if not username or not password:
-            return HttpResponse("Please provide both email and password.")
+            return HttpResponse("Please provide both username and password.")
 
-        # Authenticate user
         user = authenticate(request, username=username, password=password)
-        
-        # Debugging: Print email and password to console
-        print("Username:", username)
-        print("Password:", password)
 
         if user is not None:
             login(request, user)
             return redirect('home')
         else:
-            return HttpResponse("USERNAME OR PASSWORD IS INCORRECT!")
-
+            return HttpResponse("Username or password is incorrect.")
     return render(request, 'login.html')
 
-def Logoutpage(request):
-       logout(request)
-       return redirect('login')
+def LogoutPage(request):
+    logout(request)
+    return redirect('login')
+
+
+def predict_ranks(file_name, marks_to_predict):
+    data = pd.read_csv(file_name)
+    ranks = data['Rank']
+    marks = data['Marks'].apply(lambda x: float(str(x).replace(',', '')))
+    sorted_indices = np.argsort(marks)
+    ranks = ranks.iloc[sorted_indices]
+    marks = marks.iloc[sorted_indices]
+    extrapolate = interp1d(marks, ranks, fill_value="extrapolate")
+    predicted_ranks = extrapolate(marks_to_predict)
+    predicted_ranks = np.round(predicted_ranks).astype(int)
+    return predicted_ranks
+
+def get_file_name(category):
+    file_names = {
+        'crl': 'data/crl.csv',
+        'ews': 'data/ews.csv',
+        'sc': 'data/sc.csv',
+        'st': 'data/st.csv',
+        'obc': 'data/obc.csv'
+    }
+    return file_names.get(category.lower())
+
+def MarksVsRankPage(request):
+    predicted_ranks = []
+    if request.method == 'POST':
+        category = request.POST['category']
+        marks_input = request.POST['marks']
+        marks_to_predict = [float(mark.replace(',', '')) for mark in marks_input.split(',')]
+        file_name = get_file_name(category)
+        if file_name:
+            predicted_ranks = predict_ranks(file_name, marks_to_predict)
+        return render(request, 'index.html', {'predicted_ranks': predicted_ranks})
+    return render(request, 'index.html')
+
+
+
+def CollegePredictor(request):
+    # Get unique values from the College model for each field
+    categories = College.objects.values_list('category', flat=True).distinct()
+    genders = College.objects.values_list('gender', flat=True).distinct()
+    unknowns = College.objects.values_list('unknown', flat=True).distinct()
+
+    context = {
+        'categories': categories,
+        'genders': genders,
+        'unknowns': unknowns,
+    }
+    return render(request, 'index1.html', context)
+
+def signup(request):
+    categories = College.objects.values_list('category', flat=True).distinct()
+    genders = College.objects.values_list('gender', flat=True).distinct()
+    unknowns = College.objects.values_list('unknown', flat=True).distinct()
+    return render(request, 'index1.html', {'categories': categories, 'genders': genders, 'unknowns': unknowns})
+
+def search(request):
+    if request.method == 'POST':
+        rank = int(request.POST['rank'])
+        category = request.POST['category']
+        gender = request.POST['gender']
+        unknown = request.POST['unknown']
+        
+        results = College.objects.filter(
+            category=category,
+            gender=gender,
+            unknown=unknown,
+            opening_rank__lte=rank + 100,
+            closing_rank__gte=rank - 100
+        )
+
+        results = results.order_by('college_name')
+
+        return render(request, 'results.html', {'results': results})
+    return render(request, 'index1.html')
