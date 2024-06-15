@@ -1,60 +1,59 @@
-                                                                       JOSSA Data Analysis Portal
-Welcome to the JOSA Data Analysis Portal! This project aims to provide a user-friendly platform for data analysis tasks, leveraging the power of machine learning algorithms. Whether you're a data scientist, researcher, or enthusiast, this portal offers a suite of tools and resources to explore, analyze, and visualize datasets effectively.
+JoSAA Registration System
+The JoSAA Registration System is a web application built using Django, designed to provide various functionalities related to college admissions and counseling processes.
 
-Table of Contents
 Features
+User Authentication: Allows users to register, log in, and log out securely.
+Home Page: Provides access to different features such as Marks vs Rank, College Predictor, FAQs, About, Contact, and more.
+Marks vs Rank: Predicts ranks based on input marks and category.
+College Predictor: Predicts colleges based on user preferences.
+News and Notices: Displays important notices and news items.
+Help: Important links and helpline
+Faqs: Some frequently asked questions
+Responsive Design: Ensures compatibility across various devices.
 Installation
-Usage
-Contributing
-License
-Features
-User Authentication: Secure user authentication system to ensure data privacy and access control.
-Data Upload: Easily upload datasets in various formats (CSV, Excel, etc.) for analysis.
-Data Exploration: Explore datasets through interactive visualizations and descriptive statistics.
-Machine Learning Models: Utilize pre-trained machine learning models for predictive analysis, classification, regression, and clustering tasks.
-Custom Analysis: Develop custom analysis pipelines using popular data science libraries like Pandas, NumPy, and Scikit-learn.
-Result Visualization: Visualize analysis results through interactive plots, charts, and dashboards.
-Export Results: Export analysis results in multiple formats for further processing or sharing.
-Installation
-To run the JOSA Data Analysis Portal locally, follow these steps:
+Follow these steps to set up the project locally:
 
-Clone the repository:
+Clone the Repository:
 
 bash
 Copy code
-git clone https://github.com/yourusername/JOSA_PROJECT.git
-Navigate to the project directory:
+git clone <git@github.com:Nityam2004/JOSSA_PROJECT.git>
+cd JoSAA-Registration-System
+Install Dependencies:
 
-bash
-Copy code
-cd JOSA_PROJECT
-Install dependencies:
-
-bash
 Copy code
 pip install -r requirements.txt
-Set up environment variables (if required).
+Database Setup:
 
-Run the application:
-
-bash
+Ensure your database settings are correctly configured in settings.py.
+Apply migrations:
 Copy code
-python app.py
-Access the portal through your web browser at http://localhost:5000.
+python manage.py makemigrations
+python manage.py migrate
+Run the Development Server:
+
+Copy code
+Go in this folder and then run -- JOSSA_PROJECT\FRONTEND\login_page\registeration_system\registeration
+python manage.py runserver
+Access the Application:
+Open your web browser and go to http://127.0.0.1:8000/ to view the application.
 
 Usage
-Once the application is running, follow these steps to utilize the JOSA Data Analysis Portal:
-
-User Registration/Login: Create a new account or log in using existing credentials.
-Data Upload: Upload your dataset(s) to the portal.
-Data Exploration: Explore your data visually and through summary statistics.
-Machine Learning Analysis: Choose from a variety of machine learning models and algorithms for analysis.
-Custom Analysis: Develop custom analysis pipelines using Python scripts or Jupyter Notebooks.
-Visualization and Export: Visualize analysis results and export them in desired formats.
+User Registration: Navigate to the registration page (/signup) to create a new user account.
+User Login: Access the login page (/login) to authenticate and log into the system.
+Navigation: Use the navigation links in the header to explore different features such as Marks vs Rank, College Predictor, and more.
+News and Notices: Important notices are displayed on the homepage. Click on each notice button to view more details.
 Contributing
-Contributions to the JOSA Data Analysis Portal are welcome! If you have ideas for new features, improvements, or bug fixes, please feel free to open an issue or submit a pull request. For major changes, please discuss them in advance to ensure alignment with project goals.
+Contributions are welcome! Here's how you can contribute to the project:
 
+Fork the repository.
+Create a new branch (git checkout -b feature/your-feature).
+Commit your changes (git commit -am 'Add some feature').
+Push to the branch (git push origin feature/your-feature).
+Create a new Pull Request.
+Credits
+Created by [NITYAM , YASH PAWAR , ROHIT NIGAM , RAMJAS SAHU]
 License
 This project is licensed under the MIT License.
 
-Feel free to customize this README to better fit your project's specific features and requirements. Happy coding!
+Notes:
