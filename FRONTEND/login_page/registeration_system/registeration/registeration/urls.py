@@ -1,39 +1,26 @@
-"""
-URL configuration for registeration project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.0/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
-from django.urls import path , include
-from app1  import views
+from django.urls import path
+from app1 import views
 from django.conf.urls.static import static 
 from django.conf import settings
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('',views.SignupPage,name='signup'),
-    path('login/', views.LoginPage, name='login'),
-    path('home/', views.HomePage, name='home'),
-    path('logout/', views.LogoutPage, name='logout'),
-    path('marks_vs_rank/', views.MarksVsRankPage, name='marks_vs_rank'),
-    path('college_predictor/', views.CollegePredictor, name='college_predictor'), 
-    path('search/', views.search, name='search'),
-    path('faqs/', views.faqs, name='faqs'),
-    path('about/', views.about, name='about'),
-    path('contact/', views.contact, name='contact'),
-    path('help/', views.help, name='help'),
-    
-    
+    path('', views.SignupPage, name='signup'),  # URL for signup page
+    path('login/', views.LoginPage, name='login'),  # URL for login page
+    path('home/', views.HomePage, name='home'),  # URL for home page
+    path('logout/', views.LogoutPage, name='logout'),  # URL for logout page
+    path('marks_vs_rank/', views.MarksVsRankPage, name='marks_vs_rank'),  # URL for marks vs rank page
+    path('college_predictor/', views.CollegePredictor, name='college_predictor'),  # URL for college predictor page
+    path('search/', views.search, name='search'),  # URL for search page
+    path('faqs/', views.faqs, name='faqs'),  # URL for FAQs page
+    path('about/', views.about, name='about'),  # URL for about page
+    path('contact/', views.contact, name='contact'),  # URL for contact page
+    path('help/', views.help, name='help'),  # URL for help page
+    path('news/', views.news_and_notices_view, name='news_and_notices'),  # URL for news and notices page
 ]
 
+# Serving static and media files during development
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

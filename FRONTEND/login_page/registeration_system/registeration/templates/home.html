@@ -5,6 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My JoSAA Page</title>
     <link rel="stylesheet" href="/static/styles.css">
+    <style>
+        .header-container {
+            text-align: center;
+            padding: 20px;
+        }
+        .nav-container {
+            background-color: #f0f0f0;
+            padding: 10px;
+        }
+        .nav-container nav ul {
+            display: flex;
+            list-style-type: none;
+            padding: 0;
+        }
+        .nav-container nav ul li {
+            margin-right: 20px;
+        }
+        .nav-container nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        .container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin: 20px;
+        }
+        .news-container {
+            width: 300px; /* Fixed width for the news box */
+            height: 400px; /* Fixed height for the news box */
+            overflow-y: scroll; /* Enable vertical scrolling */
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        .news-item {
+            margin-bottom: 10px;
+            background-color: #f0f8ff; /* Very light blue background */
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .news-item a.btn {
+            text-decoration: none;
+            display: block;
+            padding: 5px 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            text-align: center;
+            color: #333;
+            margin-top: 5px;
+        }
+        .news-item a.btn:hover {
+            background-color: #f0f0f0; /* Light grey on hover */
+        }
+        .important {
+            font-weight: bold;
+        }
+        .right-div {
+            width: calc(100% - 340px); /* Adjust based on the image width and margins */
+        }
+        .iitg-photo {
+            width: 100%;
+            height: auto;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+        }
+    </style>
 </head>
 <body>
     <div class="header-container">
@@ -18,7 +90,7 @@
                 <li>
                     <a href="#" class="active">Features</a>
                     <ul class="sub-menu">
-                        <li><a href="#">ORCR</a></li>
+                       
                         <li><a href="{% url 'college_predictor' %}" class="college_predictor_link">College Predictor</a></li>
                         <li><a href="{% url 'marks_vs_rank' %}" class="rank_marks_link">Rank vs Marks</a></li>
                     </ul>
@@ -31,25 +103,27 @@
     </div>
 
     <div class="container">
-        <div class="left-div">
-            <h2>News and Notices</h2>
-            <ul id="news-list">
-                <!-- News items will be dynamically added here -->
-            </ul>
+        <div class="news-container">
+            <h2>IMPORTANT NOTICE</h2>
+            {% for news_item in all_news_items %}
+            <div class="news-item {% if news_item.important %}important{% endif %}">
+                <h3>{{ news_item.title }}</h3>
+                <a href="{{ news_item.link }}" class="btn">Read Notice</a>
+            </div>
+            {% endfor %}
         </div>
+
         <div class="right-div">
             <img src="/static/iitg_photo.jpg" alt="IITG Photo" class="iitg-photo">
         </div>
     </div>
 
-    <footer>
+    <footer class="footer">
         <ul class="footer-links">
             <li><a href="#">JEE Advanced</a></li>
             <li><a href="#">JEE Mains</a></li>
             <li><a href="#">NTA</a></li>
         </ul>
     </footer>
-
-    <script src="/static/script1.js"></script>
 </body>
 </html>

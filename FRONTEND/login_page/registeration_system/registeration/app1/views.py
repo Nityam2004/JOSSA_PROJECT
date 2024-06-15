@@ -10,19 +10,42 @@ from .models import College
 # Create your views here.
 @login_required(login_url='login')
 def HomePage(request):
+    # Example news items (replace with actual data fetching logic)
+    all_news_items = [
+        {'title': 'Notice 1', 'link': '/static/pdf/notice1.pdf'},
+        {'title': 'Notice 2', 'link': '/static/pdf/notice2.pdf'},
+        {'title': 'Notice 3', 'link': '/static/pdf/notice3.pdf'},
+        {'title': 'Notice 4', 'link': '/static/pdf/notice1.pdf'},
+        {'title': 'Notice 5', 'link': '/static/pdf/notice1.pdf'},
+        {'title': 'Notice 6', 'link': '/static/pdf/notice2.pdf'},
+        {'title': 'Notice 7', 'link': '/static/pdf/notice2.pdf'},
+        {'title': 'Notice 8', 'link': '/static/pdf/notice3.pdf'},
+        {'title': 'Notice 9', 'link': '/static/pdf/notice3.pdf'},
+        {'title': 'Notice 10', 'link': '/static/pdf/notice3.pdf'},
+        {'title': 'Notice 11', 'link': '/static/pdf/notice3.pdf'},
+        {'title': 'Notice 12', 'link': '/static/pdf/notice3.pdf'},
+        {'title': 'Notice 13', 'link': '/static/pdf/notice3.pdf'},
+        {'title': 'Notice 14', 'link': '/static/pdf/notice3.pdf'},
+        {'title': 'Notice 15', 'link': '/static/pdf/notice3.pdf'},
+    ]
+
     if request.method == 'POST':
         if 'marks_vs_rank' in request.POST:
             return redirect('rank_vs_marks')
-        if 'college_predictor' in request.POST:
+        elif 'college_predictor' in request.POST:
             return redirect('college_predictor')
-        if 'faqs' in request.POST:
+        elif 'faqs' in request.POST:
             return redirect('faqs')
-        if 'about' in request.POST:
+        elif 'about' in request.POST:
             return redirect('about')
-        if 'contact' in request.POST:
+        elif 'contact' in request.POST:
             return redirect('contact')
-        
-    return render(request, 'home.html')
+    
+    context = {
+        'all_news_items': all_news_items,
+    }
+    
+    return render(request, 'home.html', context)
 
 def SignupPage(request):
     if request.method == 'POST':
@@ -149,3 +172,17 @@ def contact(request):
 
 def help(request):
     return render(request, 'help.html')
+def news_and_notices_view(request):
+    # Example news items (replace with actual data fetching logic)
+    news_items = [
+        {'title': 'Notice 1', 'link': '#'},
+        {'title': 'Notice 2', 'link': '#'},
+        {'title': 'Notice 3', 'link': '#'},
+    ]
+
+    context = {
+        'news_items': news_items,
+    }
+
+    return render(request, 'news_and_notices.html', context)
+

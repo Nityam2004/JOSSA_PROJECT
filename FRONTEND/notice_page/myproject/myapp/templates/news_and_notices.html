@@ -1,0 +1,59 @@
+<!-- myapp/templates/news_and_notices.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My JoSAA Page - News and Notices</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="header-container">
+        <img src="/static/josaa_logo.jpg" alt="JoSAA Logo" class="logo">
+    </div>
+    <div class="nav-container">
+        <nav>
+            <ul>
+                <li><a href="{% url 'about' %}" class="about">About</a></li>
+                <li><a href="{% url 'faqs' %}" class="faqs">FAQs</a></li>
+                <li>
+                    <a href="#" class="active">Features</a>
+                    <ul class="sub-menu">
+                        <li><a href="#">ORCR</a></li>
+                        <li><a href="{% url 'college_predictor' %}" class="college_predictor_link">College Predictor</a></li>
+                        <li><a href="{% url 'marks_vs_rank' %}" class="rank_marks_link">Rank vs Marks</a></li>
+                    </ul>
+                </li>
+                <li><a href="{% url 'help' %}" class="help">Help</a></li>
+                <li><a href="{% url 'contact' %}" class="contact">Contact</a></li>
+                <li class="logout"><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="left-div">
+            <h2>News and Notices</h2>
+            <ul id="news-list">
+                {% for news_item in news_items %}
+                <li><a href="#">{{ news_item.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="right-div">
+            <img src="/static/iitg_photo.jpg" alt="IITG Photo" class="iitg-photo">
+        </div>
+    </div>
+
+    <footer>
+        <ul class="footer-links">
+            <li><a href="#">JEE Advanced</a></li>
+            <li><a href="#">JEE Mains</a></li>
+            <li><a href="#">NTA</a></li>
+        </ul>
+    </footer>
+
+    <script src="/static/script1.js"></script>
+</body>
+</html>
